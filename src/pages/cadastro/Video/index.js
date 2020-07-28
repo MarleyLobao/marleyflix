@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function CadastroVideo(){
     return (
-      <div>
+      <>
         <PageDefault>
           <h1>Cadastro</h1>
 
@@ -12,7 +12,7 @@ function CadastroVideo(){
               Cadastrar Categoria
           </Link>
         </PageDefault>
-      </div>
+      </>
     )
   };
 
