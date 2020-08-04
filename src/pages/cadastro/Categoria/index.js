@@ -23,7 +23,9 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    const URL = 'http://localhost:8081/categorias/';
+    const URL = window.location.hostname.includes('localhost') ?
+      'http://localhost:8081/categorias'
+      : 'https://marleyflix.herokuapp.com/categorias';
 
     fetch(URL)
       .then(async (respostaDoServidor) => {
