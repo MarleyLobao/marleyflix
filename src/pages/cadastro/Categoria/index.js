@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -12,19 +13,12 @@ function CadastroCategoria() {
   };
 
   const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(valoresIniciais);
 
-  function setValue(key, value) {
-    setValues({ ...values, [key]: value });
-  }
-
-  function handleChange(info) {
-    setValue(info.target.getAttribute('name'), info.target.value);
-  }
+  const { handleChange, values, clearForm } = useForm(valoresIniciais);
 
   useEffect(() => {
-    const URL = window.location.hostname.includes('localhost') ?
-      'http://localhost:8081/categorias'
+    const URL = window.location.hostname.includes('localhost')
+      ? 'http://localhost:8081/categorias'
       : 'https://marleyflix.herokuapp.com/categorias';
 
     fetch(URL)
@@ -50,13 +44,12 @@ function CadastroCategoria() {
             info.preventDefault();
             setCategorias([...categorias, values]);
 
-            setValues(valoresIniciais);
+            clearForm();
           }}
         >
 
           <FormField
             label="Nome da Categoria"
-            type="text"
             name="nome"
             value={values.nome}
             onChange={handleChange}
@@ -91,8 +84,8 @@ function CadastroCategoria() {
 
         <ul>
           {categorias.map((categoria) => (
-            <li key={`${categoria.nome}`}>
-              {categoria.nome}
+            <li key={`${categoria.titulo}`}>
+              {categoria.titulo}
             </li>
           ))}
         </ul>
