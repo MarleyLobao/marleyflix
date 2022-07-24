@@ -16,3 +16,7 @@ Esse projeto foi desenvolvido durante a Imersão React da Alura, com o objetivo 
 - ``Javascript``
 - ``HTML``
 - ``CSS``
+
+## Página oficial do projeto desenvolvido
+
+[https://marleyflix.vercel.app](https://marleyflix.vercel.app)
